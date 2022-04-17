@@ -5,12 +5,12 @@
     5. Iteration Single
 6. Newton-Raphson double
 7. Iteration double
-8. Jacobi
-9. Gauss-Seidel
+    8. Jacobi
+    9. Gauss-Seidel
 10. Lu-decompostion
 11. Thomas alogrithm
 12. Linear least square curve fitting
-13. Exponetial least square curve fitting
+13. Exponential least square curve fitting
 14. Quadratic least square curve fitting
 15. Newton's forward interpolation
 16. Newton's backward interpolation
@@ -25,3 +25,10 @@
 25. RK 2nd order
 26. RK 4th order
 27. Finite difference method
+
+
+Important
+python -m venv D:\Programming\Numerical_Method\venv
+pip install <library name>
+
+c:\python39\python.exe -m pip install --upgrade pip --user
