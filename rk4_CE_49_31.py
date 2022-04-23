@@ -1,34 +1,41 @@
-from pickle import TRUE
-import numpy;
-import matplotlib.pyplot as plt;
+import numpy as np;
+import matplotlib.pyplot as plt
 
-x0,y0 = input("Enter the initial value of x , y (float(x0),float(y0)): ").split(',')
+def f(x,y):
+    return y*(1+x**2)
 
-xn =float(input("Enter the final value of x (xn): "))
+def printTabular():
+    print('n\t\t||\t\t x\t\t||\t\t y')
+    print("------------------------------------------------------------------------------")
+    for i in range(n+1):
+        x[i]=round(x[i],roundVal)
+        y[i]=round(y[i],roundVal)
+        print('🙁',i+1,'\t\t||\t\t🙁',x[i],'\t\t||\t\t🙁',y[i])
 
-n = int(input("Enter the number of intervals required: "))
-
+x0,y0 = input("\nEnter the initial value of x , y ( x0 , y0").split(',')
+xn = float(input("\nEnter the final value of x , xn = "))
+n = int(input("\nEnter the number of intervals required : "))
+roundVal = int(input("\nEnter the number of digits to round to : "))
 h = (xn-float(x0))/n
-def calcFunction (x,y):
-    return h*(y*(1+x*x))
 
-x = numpy.linspace( float(x0) , xn, num = n+1 , endpoint=TRUE)
-y = numpy.zeros(n+1)
+x = np.linspace( float(x0) , xn, num = n+1 , endpoint=1)
+y = np.zeros(n+1)
 y[0] = float(y0)
 
-print('h = ',h)
+
+print('\nh = ',h)
 
 for i in range(n):
-    k1 = calcFunction(x[i] , y[i])
-    k2 = calcFunction(x[i] + h/2, y[i] + k1/2)
-    k3 = calcFunction(x[i] + h/2, y[i] + k2/2)
-    k4 = calcFunction(x[i] + h, y[i] + k3)
-    k = 1/6 * (k1 + 2*k2 + 2*k3 + k4)
-    y[i+1] = y[i] + k
+    k1 = h * f(x[i] , y[i])
+    k2 = h * f(x[i] + h/2, y[i] + k1/2)
+    k3 = h * f(x[i] + h/2, y[i] + k2/2)
+    k4 = h * f(x[i] + h, y[i] + k3)
 
-for i in range(n+1):
-    print("%.4f"%x[i],'\t',"%.4f"%y[i])
-print("\n%.4f"%y[i])
+    y[i+1] = y[i] + 1/6 * (k1 + 2*k2 + 2*k3 + k4)
+
+printTabular()
+print('\nf(',x[n],') = ',y[n])
+
 plt.figure()
 plt.plot(x,y,'go-')
 plt.show()
